@@ -1,7 +1,7 @@
 (function($) {
   "use strict"; // Start of use strict
   
-  var snoowrap = require('snoowrap');
+  var snoowrap = require(['snoowrap'], snoowrap());
   const r = new snoowrap({
       userAgent: 'morganradic',
       clientId: 'A_EtHItRrL0i6A',

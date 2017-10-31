@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="device-mockups/device-mockups.min.css">
 
     <!-- Custom styles for this template -->
-    <link href="css/new-age.min.css" rel="stylesheet">
+    <link href="css/new-age.css" rel="stylesheet">
 
   </head>
 
@@ -46,12 +46,11 @@
               <form action="/action_page.php">
                 Subreddit: <input type="text" name="subreddit"><br>
               </form>
-              <a href="#download" class="btn btn-outline btn-xl js-scroll-trigger">Analyze Subreddit</a>
+              <button id="subredditSubmit" class="btn btn-outline btn-xl js-scroll-trigger" onclick="getPosts();">Analyze Subreddit</button>
             </div>
           </div>
           <div class="col-lg-5 my-auto">
             <div class="device-container">
-              <div class="device-mockup iphone6_plus portrait white">
                 <div class="device">
                   <div class="screen">
                     <!-- Demo image for screen mockup, you can put an image here, some HTML, an animation, video, or anything else! -->
@@ -60,7 +59,6 @@
                   <div class="button">
                     <!-- You can hook the "home button" to some JavaScript events or just remove it -->
                   </div>
-                </div>
               </div>
             </div>
           </div>
@@ -93,7 +91,7 @@
     <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/new-age.min.js"></script>
+    <script data-main="scripts/new-age.js" src="scripts/require.js"></script>
 
   </body>
 

@@ -291,18 +291,22 @@ footer {
 .btn-outline {
   color: white;
   border: 1px solid;
-  border-color: white; }
+  border-color: white; 
+  background: transparent;}
   .btn-outline:hover, .btn-outline:focus, .btn-outline:active, .btn-outline.active {
     color: white;
     border-color: #fdcc52;
-    background-color: #fdcc52; }
+    background-color: #fdcc52; 
+    background: transparent;}
 
 .btn {
   border-radius: 300px;
   font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
   letter-spacing: 2px;
-  text-transform: uppercase; }
+  text-transform: uppercase; 
+  background: transparent;}
 
 .btn-xl {
   font-size: 11px;
-  padding: 15px 45px; }
+  padding: 15px 45px; 
+  background: transparent;}
