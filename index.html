@@ -41,12 +41,17 @@
       <div class="container h-100">
         <div class="row h-100">
           <div class="col-lg-7 my-auto">
-            <div class="header-content mx-auto">
+            <div id="preAnalyze" class="header-content mx-auto">
               <h1 class="mb-5">Type in a subreddit, or type "all" to analyze the tone of all of Reddit.</h1>
               <form action="/action_page.php">
-                Subreddit: <input type="text" name="subreddit"><br>
+                Subreddit: <input id="getSub" type="text" name="subreddit"><br>
               </form>
               <button id="subredditSubmit" class="btn btn-outline btn-xl js-scroll-trigger" onclick="getPosts();">Analyze Subreddit</button>
+            </div>
+            <div style="display:none" id="postAnalyze" class="header-content mx-auto">
+              <h1 id="postSub" class="mb-5"></h1>
+              <h4 id="postTone" class="mb-5"></h4>
+              <button id="newSub" class="btn btn-outline btn-xl js-scroll-trigger" onclick="newSub();">Analyze New Subreddit</button>
             </div>
           </div>
           <div class="col-lg-5 my-auto">
@@ -68,7 +73,7 @@
 
     <footer>
       <div class="container">
-        <p>&copy; 2017 Start Bootstrap. All Rights Reserved.</p>
+        <p>&copy; IST 402 Team 10</p>
         <ul class="list-inline">
           <li class="list-inline-item">
             <a href="#">Privacy</a>
