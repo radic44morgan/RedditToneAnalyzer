@@ -1,16 +1,6 @@
 (function($) {
   "use strict"; // Start of use strict
 
-  //use this stuff l8r 
-  // var snoowrap = require('snoowrap');
-  // const r = new snoowrap({
-  //     userAgent: 'morganradic',
-  //     clientId: 'A_EtHItRrL0i6A',
-  //     clientSecret: 'RwXvHAR_beIZR81hzhS1z0gQwIQ',
-  //     refreshToken: '42316489-W0ozardOWQf2mexRSOW2opleL0Q'
-  //   });
-  // r.getSubreddit('Showerthoughts').getHot().map(post => post.title).then(console.log)
-  
   // Smooth scrolling using jQuery easing
   $('a.js-scroll-trigger[href*="#"]:not([href="#"])').click(function() {
     if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -52,13 +42,72 @@
 
 })
 
+function testPosts()
+{
+  //'use strict'; 
+  require(['snoowrap'], function (snoowrap) {
+    
+    const r = new window.snoowrap({
+      userAgent: 'morganradic',
+      clientId: 'A_EtHItRrL0i6A',
+      clientSecret: 'RwXvHAR_beIZR81hzhS1z0gQwIQ',
+      refreshToken: '42316489-W0ozardOWQf2mexRSOW2opleL0Q'
+    });
+  var subReddit = document.getElementById("getSub").value;
+  var posts = r.getSubreddit(subReddit).getHot().map(post => post.title);
+  //console.log(posts);
+  console.log(document.getElementById("getSub").value);
+  analyzeTone("mother fucker");
+  });
+
+    
+}
+  
+function analyzeTone(posts){
+	var ToneAnalyzerV3 = require(['watson-developer-cloud/tone-analyzer/v3'], function(v3){
+    var returnTone = "";
+    var tone_analyzer = new ToneAnalyzerV3({
+      username: '71d4619d-69df-4e18-81b7-66856bda1723',
+      password: 'wSYiLZWouxS0',
+      version_date: '2016-05-19'
+    });
+  
+    tone_analyzer.tone({ text: posts },
+      function(err, tone) {
+        if (err)
+          console.log(err);
+        else
+            returnTone = JSON.stringify(tone, null, 2);
+            console.log(returnTone);
+            return tone;
+    });
+  });
+ 
+}
+
 function getPosts()
 {
+  var percent = getPercentage();
   document.getElementById("preAnalyze").style.display = "none";
   document.getElementById("postAnalyze").style.display = "block";
   document.getElementById("postSub").innerHTML = "r/" + document.getElementById("getSub").value + ": ";
-  document.getElementById("postTone").innerHTML = getTone() + ": " + getPercentage() + "%";
+  document.getElementById("postTone").innerHTML = getTone() + ": " + percent + "%";
+  move(percent);
   
+}
+
+function move(percent) {
+  var elem = document.getElementById("myBar"); 
+  var width = 1;
+  var id = setInterval(frame, 10);
+  function frame() {
+      if (width >= percent) {
+          clearInterval(id);
+      } else {
+          width++; 
+          elem.style.width = width + '%'; 
+      }
+  }
 }
 
 function newSub()
@@ -111,7 +160,12 @@ function getTone()
 
 function getPercentage()
 {
-  return Math.floor(Math.random()*100);
+  var rand = Math.floor(Math.random()*100);
+  if (rand < 50)
+  {
+    rand = rand + 50;
+  }
+  return rand;
 }
 
 (jQuery); // End of use strict
